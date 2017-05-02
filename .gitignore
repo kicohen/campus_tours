@@ -20,3 +20,5 @@ db.sqlite3
 
 # MacOS index file
 .DS_Store
+
+pyenv/
