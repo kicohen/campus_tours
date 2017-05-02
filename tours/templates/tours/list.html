@@ -1,23 +1,24 @@
 {% extends "tours/base.html" %}
-
+{% load staticfiles %}
 {% block content %}
 <div class="container-fluid">
   <div class="row search">
     <input type="text" name="" placeholder="Search" id="entry">
   </div>
-  <div class="row location" id="TheCut">
+  {% for location in locations %}
+  <div class="row location" data-name="{{location.name}}">
     <div class="col-xs-3 small-padding">
-      <img class="location-image" src="assets/img/thecut.jpg">
+      <img class="location-image" src="{% static '' %}img/{{location.image_name}}">
     </div>
     <div class="col-xs-8">
-      <h5>The Cut</h5>
-      <p>Carnegie Mellon's new student Orientation is an extensive full-week program
-that will focus on academics, tradition and community.</p>
+      <h5>{{ location.name }}</h5>
+      <p>{{ location.description }}</p>
     </div>
     <div class="col-xs-1 next">
-      <a href="destination.html">></a>
+      <a href="{% url 'destination' %}?id={{location.pk}}">></a>
     </div>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}
 
@@ -44,7 +45,6 @@ $(function () {
         setTimeout(function () {
             var inputs = input.val().toLowerCase();
             var query = inputs.replace(" ","_");
-            console.log(query)
             if (query == 'NaN') {
                 $('.location').show();
             } else {    
