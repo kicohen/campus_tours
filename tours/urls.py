@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^logout/$',auth_views.logout, {'next_page':'login'}, name='logout'),
     url(r'^admin_panel$', tours_views.admin_panel, name='admin_panel'),
     url(r'^photo/(?P<id>\d+)$', tours_views.get_photo, name='photo'),
+    url(r'^photo_testimonial/(?P<id>\d+)$', tours_views.get_photo_testimonial, name='photo_testimonial'),
 ]

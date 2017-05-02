@@ -47,6 +47,12 @@ def get_photo(request, id):
         raise Http404
     return HttpResponse(location.picture)
 
+def get_photo_testimonial(request, id):
+    testimonial = get_object_or_404(Testimonial, id=id)
+    if not testimonial.picture:
+        raise Http404
+    return HttpResponse(testimonial.picture)
+
 ################################################################
 #                       Location Pages                         #
 ################################################################
