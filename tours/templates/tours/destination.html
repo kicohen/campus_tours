@@ -1,0 +1,74 @@
+{% extends "tours/base.html" %}
+
+{% block content %}
+<div class="title-image">
+</div>
+<div class="title-bar">
+	University Center
+</div>
+<br>
+<div class="sub-images container">
+	<div class="row">
+		<div class="col-xs-4">
+			<img class="small-image" src="assets/img/bridge.jpg"></img>
+		</div>
+		<div class="col-xs-4">
+			<img class="small-image" src="assets/img/hunt.jpg"></img>
+		</div>
+		<div class="col-xs-4">
+			<img class="small-image" src="assets/img/thecut.jpg"></img>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-8">
+			<img class="medium-image" id='touchstart' src="assets/img/thecut.jpg"></img>
+		</div>
+		<div class="col-xs-4">
+			<img class="small-image" id='mouseover' src="assets/img/purnell.jpg"></img>
+			<br>
+			<br>
+			<img class="small-image" id='touchmove' src="assets/img/thefence.jpg"></img>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+function addEventListeners(){
+	var touchstart = document.getElementById('touchstart');
+	touchstart.addEventListener("mouseover", openModal);
+	touchstart.addEventListener("touchmove", openModal);
+	touchstart.addEventListener("touchstart", openModal);
+	touchstart.addEventListener("touchenter", openModal);
+}
+
+addEventListeners();
+
+function openModal(a){
+	$("#myModal").modal();
+	console.log(a);
+}
+</script>
+{% endblock %}

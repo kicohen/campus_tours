@@ -1,0 +1,121 @@
+{% extends "tours/base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+        <div class="row search">
+            <input type="text" name="" placeholder="Search" id="entry">
+        </div>
+        <div class="row location" id="TheCut">
+            <div class="col-xs-3 small-padding">
+                <img class="location-image" src="assets/img/thecut.jpg">
+            </div>
+            <div class="col-xs-8">
+                <h5>The Cut</h5>
+                <p>Carnegie Mellon's new student Orientation is an extensive full-week program
+that will focus on academics, tradition and community.</p>
+            </div>
+            <div class="col-xs-1 next">
+                <a href="destination.html">></a>
+            </div>
+        </div>
+        <div class="row location" id="The Fence">
+            <div class="col-xs-3 small-padding">
+                <img class="location-image" src="assets/img/thefence.jpg">
+            </div>
+            <div class="col-xs-8">
+                <h5>The Fence</h5>
+                <p>The unofficial university billboard, the Fence is painted between midnight and sunrise by students who then stand guard as long as they want their message to stay.</p>
+            </div>
+            <div class="col-xs-1 next">
+                <a>></a>
+            </div>
+        </div>
+        <div class="row location" id="TheCohonUniversityCenter">
+            <div class="col-xs-3 small-padding">
+                <img class="location-image" src="assets/img/uc.png">
+            </div>
+            <div class="col-xs-8">
+                <h5>The Cohon University Center</h5>
+                <p>Carnegie Mellon's new student Orientation is an extensive full-week program
+that will focus on academics, tradition and community.</p>
+            </div>
+            <div class="col-xs-1 next">
+                <a>></a>
+            </div>
+        </div>
+        <div class="row location" id="HuntLibrary">
+            <div class="col-xs-3 small-padding">
+                <img class="location-image" src="assets/img/hunt.jpg">
+            </div>
+            <div class="col-xs-8">
+                <h5>Hunt Library</h5>
+                <p>Carnegie Mellon's new student Orientation is an extensive full-week program
+that will focus on academics, tradition and community.</p>
+            </div>
+            <div class="col-xs-1 next">
+                <a>></a>
+            </div>
+        </div>
+        <div class="row location">
+            <div class="col-xs-3 small-padding">
+                <img class="location-image" src="assets/img/purnell.jpg">
+            </div>
+            <div class="col-xs-8">
+                <h5>School of Drama</h5>
+                <p>Key players will take ownership of their alignments by dynamically relaying end-to-end propositions.</p>
+            </div>
+            <div class="col-xs-1 next">
+                <a>></a>
+            </div>
+        </div>
+        <div class="row location">
+            <div class="col-xs-3 small-padding">
+                <img class="location-image" src="assets/img/bridge.jpg">
+            </div>
+            <div class="col-xs-8">
+                <h5>The Randy Pausch Bridge</h5>
+                <p>Key players will take ownership of their alignments by dynamically relaying end-to-end propositions.</p>
+            </div>
+            <div class="col-xs-1 next">
+                <a>></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+jQuery.expr[':'].regex = function(elem, index, match) {
+    var matchParams = match[3].split(','),
+        validLabels = /^(data|css):/,
+        attr = {
+            method: matchParams[0].match(validLabels) ? 
+                        matchParams[0].split(':')[0] : 'attr',
+            property: matchParams.shift().replace(validLabels,'')
+        },
+        regexFlags = 'ig',
+        regex = new RegExp(matchParams.join('').replace(/^s+|s+$/g,''), regexFlags);
+    return regex.test(jQuery(elem)[attr.method](attr.property));
+}
+
+$(function () {
+    
+    var input = $("#entry");
+    input.keydown(function () {
+
+        setTimeout(function () {
+            var inputs = input.val().toLowerCase();
+            var query = inputs.replace(" ","_");
+            console.log(query)
+            if (query == 'NaN') {
+                $('.location').show();
+            } else {    
+                $('.location').hide()
+                $('.location:regex(id,'+query+')').show();
+            }
+        }, 10);
+        
+    });
+});
+</script>
+{% endblock %}

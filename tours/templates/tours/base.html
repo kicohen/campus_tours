@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Title and Meta Data -->
+	<title> {% block title %} CMU Tours {% endblock %} </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Stylesheets -->
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+	<div id="logo">
+		<img src="{% static 'img/CMU_Logo_Horiz_Red.png' %}">
+	</div>
+	<div id="nav-icon" onclick="toggleNav()">
+	  <span></span>
+	  <span></span>
+	  <span></span>
+	  <span></span>
+	</div>
+</nav>
+
+
+<!-- Nav overlay -->
+<div id="myNav" class="overlay">
+  <div class="overlay-content">
+    <a href="destinations.html">Destinations</a>
+    <hr>
+    <a href="about.html">About</a>
+    <hr>
+    <a href="map.html">Where am I?</a>
+    <hr>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+<!-- Page Content -->
+<main>
+{% block content %}
+{% endblock %}
+</main>
+
+</body>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Website Javascript -->
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<!-- Page Specific Javascript -->
+{% block javascript %}
+{% endblock %}
+</html>

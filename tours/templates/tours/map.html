@@ -1,0 +1,64 @@
+{% extends "tours/base.html" %}
+
+{% block content %}
+<div id="map"></div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(myMap, showError);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function myMap(position) {
+var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+var theMallMarker = new google.maps.LatLng(parseFloat(40.441807),parseFloat(-79.944069));
+var theFenceMarker = new google.maps.LatLng(parseFloat(40.442261),parseFloat(-79.943431));
+var pauschBridgeMarker = new google.maps.LatLng(parseFloat(40.443232),parseFloat(-79.944121));
+// var image = "http://www.stlouisscottierescue.com/Scottie_sill_trans.gif";
+var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: position.coords.latitude, lng: position.coords.longitude},
+          zoom: 17,
+          mapTypeControlOptions: {
+            mapTypeIds: ['satellite']
+          }
+        });
+
+var image = {
+    url: "http://www.stlouisscottierescue.com/Scottie_sill_trans.gif", // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(25, 25) // anchor
+};
+
+var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Current Location',
+          icon: image
+        });
+var theMall = new google.maps.Marker({
+          position: theMallMarker,
+          map: map,
+          title: 'The Mall'
+        });
+var theFence = new google.maps.Marker({
+		  position: theFenceMarker,
+		  map: map,
+		  title: 'The Fence'
+		});
+var pauschBridge = new google.maps.Marker({
+		  position: pauschBridgeMarker,
+		  map: map,
+		  title: 'The Pausch Bridge'
+})
+}
+</script>
+<!-- Google Maps API -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcW3Bs3eY07QCJj3_yR7p0ISiyPxg3mz0&callback=getLocation"
+  type="text/javascript"></script>
+{% endblock %}
