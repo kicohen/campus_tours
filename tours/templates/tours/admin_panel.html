@@ -1,0 +1,9 @@
+{% extends "tours/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container">
+<h3>Admin Panel</h3>
+<a href="{% url 'new_destination' %}">Add Destination to Tour</a><br>
+<a href="{% url 'new_destination' %}">Add Testimonial to Tour</a>
+</div>
+{% endblock %}

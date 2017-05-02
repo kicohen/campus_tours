@@ -3,9 +3,9 @@
 {% block content %}  
 <div class="container">
 <br>
-<form method="post" action="{% url 'new_destination' %}">
-    {% load bootstrap %}
-    {{ form|bootstrap}}
+<form method="post" action="{% url 'new_destination' %}" enctype="multipart/form-data">
+	{% load bootstrap %}
+	{{ form|bootstrap }}
     {% csrf_token %}
 <input type="submit" class="btn btn-success" value="Add Location" />
 </form>

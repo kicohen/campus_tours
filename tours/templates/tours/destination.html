@@ -1,7 +1,7 @@
 {% extends "tours/base.html" %}
 
 {% block content %}
-<div class="title-image">
+<div style="background: url('{% url 'photo' location.id %}'); background-size: contain;" class="title-image" >
 </div>
 <div class="title-bar">
 	{{location.name}}

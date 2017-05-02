@@ -22,6 +22,9 @@ def about(request):
 def contact(request):
 	return render(request, 'tours/contact.html')
 
+def admin_panel(request):
+	return render(request, 'tours/admin_panel.html')
+
 ################################################################
 #                       Helper Functions                       #
 ################################################################
@@ -37,6 +40,12 @@ def is_logged_in(request):
 	if request.user.is_authenticated():
 		return True
 	return False
+
+def get_photo(request, id):
+    location = get_object_or_404(Location, id=id)
+    if not location.picture:
+        raise Http404
+    return HttpResponse(location.picture)
 
 ################################################################
 #                       Location Pages                         #
@@ -73,8 +82,11 @@ def new_destination(request):
 	if request.method == 'POST':
 		form = LocationForm(request.POST, request.FILES)
 		if form.is_valid():
+			print("Form is valid")
 			form.save()
 			return destinations(request)
+		else:
+			print("Error")
 	context['form'] = LocationForm()
 	return render(request, 'tours/new_location.html', context)
 
