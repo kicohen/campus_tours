@@ -7,8 +7,32 @@
 	{% load bootstrap %}
 	{{ form|bootstrap }}
     {% csrf_token %}
-<input type="submit" class="btn btn-success" value="Add Location" />
+    <p class="btn btn-primary" onclick='setLocation()'>Set to Current Location</p><br><br>
+	<input type="submit" class="btn btn-success" value="Add Location" />
+	<p id="demo"></p>
 </form>
-
 </div>      
 {% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript">
+var lat = document.getElementById("id_latitude");
+var long = document.getElementById("id_longitude");
+
+function setLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    lat.value = position.coords.latitude;
+    long.value = position.coords.longitude;
+}
+
+</script>
+
+{% endblock%}
