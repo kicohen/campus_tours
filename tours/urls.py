@@ -12,6 +12,6 @@ urlpatterns = [
 	url(r'^map$', tours_views.map, name='map'),
 	url(r'^flush$', tours_views.clear_session, name='flush'),
 	url(r'^register$', tours_views.register, name='register'),
-	url(r'^admin$', auth_views.login, {'template_name':'tours/login.html'}, name='login'),
+	url(r'^login$', auth_views.login, {'template_name':'tours/login.html'}, name='login'),
     url(r'^logout/$',auth_views.logout, {'next_page':'login'}, name='logout'),
 ]

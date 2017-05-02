@@ -8,7 +8,7 @@
   {% for location in locations %}
   <div class="row location" data-name="{{location.name}}">
     <div class="col-xs-3 small-padding">
-      <img class="location-image" src="{% static '' %}img/{{location.image_name}}">
+      <img class="location-image" src="{% url 'photo' user_data.profile.id %}">
     </div>
     <div class="col-xs-8">
       <h5>{{ location.name }}</h5>
