@@ -4,8 +4,8 @@ from django.db import models
 class Location(models.Model):
 	name = models.CharField(max_length=160)
 	description = models.TextField(max_length=430, blank=True)
-	latitude = models.IntegerField(blank=True, null=True)
-	longitude = models.IntegerField(blank=True, null=True)
+	latitude = models.FloatField(blank=True, null=True)
+	longitude = models.FloatField(blank=True, null=True)
 	image_name = models.CharField(max_length=160)
 
 
