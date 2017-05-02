@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^destinations$', tours_views.destinations, name='destinations'),
 	url(r'^destination$', tours_views.destination, name='destination'),
 	url(r'^map$', tours_views.map, name='map'),
+	url(r'^flush$', tours_views.clear_session, name='flush'),
 ]

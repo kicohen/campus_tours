@@ -41,13 +41,13 @@ function showPosition(position) {
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            window.location = "index.html";
+            window.location = "..";
             break;
         case error.POSITION_UNAVAILABLE:
-            window.location = "index.html";
+            window.location = "..";
             break;
         case error.TIMEOUT:
-            window.location = "index.html";
+            window.location = "..";
             break;
         case error.UNKNOWN_ERROR:
             x.innerHTML = "An unknown error occurred."

@@ -38,10 +38,14 @@ def map(request):
 	return render(request, 'tours/map.html', context)
 
 def destination(request):
+	if 'visited' not in request.session:
+		print('Visited in session')
+		request.session['visited'] = []
 	lid = request.GET.get('id', '')
 	context = dict()
 	location = get_object_or_404(Location, pk=lid)
 	testimonials = get_list_or_none(Testimonial, location=location)
+	request.session['visited'].append(location.pk)
 	context['location'] = location
 	context['testimonials'] = testimonials
 	return render(request, 'tours/destination.html', context)
@@ -51,3 +55,12 @@ def destinations(request):
 	locations = Location.objects.all()
 	context['locations'] = locations
 	return render(request, 'tours/list.html', context)
+
+
+################################################################
+#                        Debug Pages                           #
+################################################################
+
+def clear_session(request):
+	request.session.flush()
+	return render(request, 'tours/home.html')
