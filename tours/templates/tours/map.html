@@ -1,7 +1,18 @@
 {% extends "tours/base.html" %}
-
+{% load staticfiles %}
 {% block content %}
+<style type="text/css">
+  #loading{
+    position: absolute;
+    top: calc(50vh - 120px);
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 240px;
+    z-index: -9999;
+  }
+</style>
 <div id="map"></div>
+<img src="{% static 'img/spinner.gif' %}" id="loading">
 {% endblock %}
 
 {% block javascript %}
@@ -17,11 +28,6 @@ function getLocation() {
 function myMap(position) {
 var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
 
-{% for location in locations %}
-
-{% endfor %}
-
-// var image = "http://www.stlouisscottierescue.com/Scottie_sill_trans.gif";
 var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: position.coords.latitude, lng: position.coords.longitude},
           zoom: 17,
@@ -52,7 +58,10 @@ var marker = new google.maps.Marker({
           icon: image
         });
 
+
+
 }
+
 </script>
 <!-- Google Maps API -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcW3Bs3eY07QCJj3_yR7p0ISiyPxg3mz0&callback=getLocation"

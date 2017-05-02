@@ -6,6 +6,7 @@
     <input type="text" name="" placeholder="Search" id="entry">
   </div>
   {% for location in locations %}
+  <a href="{% url 'destination' %}?id={{location.pk}}" style="color: black">
   <div class="row location" data-name="{{location.name}}">
     <div class="col-xs-3 small-padding">
       <img class="location-image" src="{% url 'photo' location.id %}">
@@ -18,6 +19,7 @@
       <a href="{% url 'destination' %}?id={{location.pk}}">></a>
     </div>
   </div>
+  </a>
   {% endfor %}
 </div>
 {% endblock %}

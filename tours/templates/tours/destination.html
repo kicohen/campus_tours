@@ -1,35 +1,28 @@
 {% extends "tours/base.html" %}
 
 {% block content %}
+<style type="text/css">
+	.bg_image{
+	    height: 35vh;
+	    margin:0;
+	    margin: 5px;
+	    padding:0px;
+	    width: calc(33% - 10px);
+	}
+</style>
 <div style="background: url('{% url 'photo' location.id %}'); background-size: contain;" class="title-image" >
 </div>
 <div class="title-bar">
 	{{location.name}}
 </div>
 <br>
-<div class="sub-images container">
+<div class="container">
 	<div class="row">
-		<div class="col-xs-4">
-			<img class="small-image" src=""></img>
+		{% for testimonial in testimonials %}
+		<div class="col-xs-4 bg_image" style="background: url('{% url 'photo' location.id %}');">
+			
 		</div>
-		<div class="col-xs-4">
-			<img class="small-image" src=""></img>
-		</div>
-		<div class="col-xs-4">
-			<img class="small-image" src=""></img>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-xs-8">
-			<img class="medium-image" id='touchstart' src=""></img>
-		</div>
-		<div class="col-xs-4">
-			<img class="small-image" id='mouseover' src=""></img>
-			<br>
-			<br>
-			<img class="small-image" id='touchmove' src=""></img>
-		</div>
+		{% endfor %}
 	</div>
 </div>
 
