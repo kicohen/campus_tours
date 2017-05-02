@@ -22,6 +22,7 @@ def about(request):
 def contact(request):
 	return render(request, 'tours/contact.html')
 
+@login_required
 def admin_panel(request):
 	return render(request, 'tours/admin_panel.html')
 
@@ -65,7 +66,6 @@ def map(request):
 
 def destination(request):
 	if 'visited' not in request.session:
-		print('Visited in session')
 		request.session['visited'] = []
 	lid = request.GET.get('id', '')
 	context = dict()
@@ -88,13 +88,26 @@ def new_destination(request):
 	if request.method == 'POST':
 		form = LocationForm(request.POST, request.FILES)
 		if form.is_valid():
-			print("Form is valid")
 			form.save()
 			return destinations(request)
-		else:
-			print("Error")
 	context['form'] = LocationForm()
 	return render(request, 'tours/new_location.html', context)
+
+################################################################
+#                     Testimonial Pages                        #
+################################################################
+
+@login_required
+def new_testimonial(request):
+	context = dict()
+	if request.method == 'POST':
+		form = TestimonialForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return destinations(request)
+	context['form'] = TestimonialForm()
+	return render(request, 'tours/new_testimonial.html', context)
+
 
 ################################################################
 #                         User Pages                           #

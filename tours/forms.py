@@ -61,3 +61,19 @@ class LocationForm(forms.ModelForm):
         if picture.size > 5242880:
             raise forms.ValidationError('File too big (max size is {0} bytes)'.format(MAX_UPLOAD_SIZE))
         return picture
+
+class TestimonialForm(forms.ModelForm):
+    class Meta:
+        model = Testimonial
+        exclude = ()
+
+    def clean_picture(self):
+        picture = self.cleaned_data['picture']
+        suffix = str(picture)[-3:]
+        if not picture:
+            raise forms.ValidationError('You must upload a picture')
+        if suffix not in ['jpg', 'png', 'gif'] and (not picture.content_type or not picture.content_type.startswith('image')):
+            raise forms.ValidationError('File type is not image')
+        if picture.size > 5242880:
+            raise forms.ValidationError('File too big (max size is {0} bytes)'.format(MAX_UPLOAD_SIZE))
+        return picture
