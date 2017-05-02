@@ -1,0 +1,14 @@
+{% extends "tours/base.html" %}
+
+{% block content %}  
+<div class="container">
+<br>
+<form method="post" action="{% url 'login' %}">
+    {% load bootstrap %}
+    {{ form|bootstrap}}
+    {% csrf_token %}
+<input type="submit" class="btn btn-success" value="Login" />
+</form>
+
+</div>      
+{% endblock %}

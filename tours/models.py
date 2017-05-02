@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Location(models.Model):
@@ -6,7 +7,7 @@ class Location(models.Model):
 	description = models.TextField(max_length=430, blank=True)
 	latitude = models.FloatField(blank=True, null=True)
 	longitude = models.FloatField(blank=True, null=True)
-	image_name = models.CharField(max_length=160)
+	picture = models.FileField(upload_to="images", blank=True)
 
 
 class Testimonial(models.Model):

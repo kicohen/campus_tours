@@ -25,7 +25,7 @@ SECRET_KEY = '6@6*bpmjlyp2v42cc-xkr5h5tt^2q%77m4i0xf^6=q_00k=%u5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','0.0.0.0','128.237.140.70']
+ALLOWED_HOSTS = ['localhost','0.0.0.0','128.237.140.70', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
     'tours',
 ]
 
@@ -114,6 +115,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = '/destinations'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -122,4 +124,4 @@ MAX_UPLOAD_SIZE = "5242880"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tours/static/img')

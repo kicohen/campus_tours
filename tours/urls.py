@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from tours import views as tours_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	url(r'^$', tours_views.home, name='home'),
@@ -7,6 +8,10 @@ urlpatterns = [
 	url(r'^contact$', tours_views.contact, name='contact'),
 	url(r'^destinations$', tours_views.destinations, name='destinations'),
 	url(r'^destination$', tours_views.destination, name='destination'),
+	url(r'^new_location$', tours_views.new_destination, name='new_destination'),
 	url(r'^map$', tours_views.map, name='map'),
 	url(r'^flush$', tours_views.clear_session, name='flush'),
+	url(r'^register$', tours_views.register, name='register'),
+	url(r'^admin$', auth_views.login, {'template_name':'tours/login.html'}, name='login'),
+    url(r'^logout/$',auth_views.logout, {'next_page':'login'}, name='logout'),
 ]
