@@ -15,6 +15,40 @@ You are at the <span id="placeName"></span>.
 
 {% block javascript %}
 <script>
+var places = [
+  {% for destination in locations %}
+  {
+    name: "{{destination.name}}",
+    lat: "{{destination.latitude}}",
+    long: "{{destination.longitude}}",
+    id: "{{destination.pk}}",
+  },
+  {% endfor %}
+];
+
+var epsilon = 0.0001;
+
+function isNearPlace(place, currentPosition){
+  var dLat = Math.abs(currentPosition.coords.latitude - place.lat);
+  var dLong = Math.abs(currentPosition.coords.longitude - place.long);
+  var distance = Math.sqrt(Math.pow(dLat, 2) + Math.pow(dLong, 2));
+  if (distance <= epsilon){
+    showAlert(place.name, place.id);
+    return true;
+  }
+  return false;
+}
+
+function checkPlaces(position){
+  for (var i = 0; i < places.length; i++){
+    console.log("Checking current position against "+places[i].name);
+    if (isNearPlace(places[i], position)){
+      return;
+    }
+  }
+}
+
+
 function showAlert(name, id) {
   document.getElementById('placeName').innerHTML = name;
   document.getElementById('placeLink').href = "{% url 'destination' %}?id=" + id;
@@ -78,6 +112,7 @@ function myMap(position) {
 
 function moveMarker( map, marker ) {
     function updatePosition(position){
+        checkPlaces(position);
         marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
         // map.panTo( new google.maps.LatLng( 0, 0 ) );
     }
