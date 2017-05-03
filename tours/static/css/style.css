@@ -196,25 +196,32 @@ main {
     position: fixed;
     left: 110%;
     top: 75px;
-    height: 50px;
+    min-height: 50px;
     padding: 15px;
     z-index: 5;
     color: #3c763d;
     background-color: #dff0d8;
     border: 1px solid #3c763d;
     border-radius: 15px;
+    vertical-align: top;
+}
+
+#mapText{
+    max-width: calc(100% - 100px);
 }
 
 #moreInfo{
+    position: fixed;
+    top: 75px;
     width: 100px;
-    height: 50px;
     text-align: center;
     vertical-align: middle;
     background-color: #C3E3B5;
     float: right;
     color: #3c763d;
-    padding-top: 3px;
-    margin: -16px;
+    vertical-align: top;
+    padding-top: 5px;
+    margin-left: calc(80% - 115px);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border: 1px #3c763d solid;
