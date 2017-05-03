@@ -42,9 +42,10 @@ function isNearPlace(place, currentPosition){
 function checkPlaces(position){
   for (var i = 0; i < places.length; i++){
     if (isNearPlace(places[i], position)){
-      console.log(places[i].name);
+      return
     }
   }
+  hideAlert();
 }
 
 
@@ -53,6 +54,12 @@ function showAlert(name, id) {
   document.getElementById('placeLink').href = "{% url 'destination' %}?id=" + id;
   $( "#mapAlert" ).animate({
     left: "10%",
+  }, 1000 );
+};
+
+function hideAlert() {
+  $( "#mapAlert" ).animate({
+    left: "110%",
   }, 1000 );
 };
 
