@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block content %}
 <div id="mapAlert">
-<div id="mapText">You are at the <span id="placeName"></span>.</div>
+<div id="mapText">You are at the <a id="placeName" href=""></a>.</div>
 <a href="" id="placeLink">
 <div id="moreInfo">
   More Information
@@ -51,6 +51,7 @@ function checkPlaces(position){
 
 function showAlert(name, id) {
   document.getElementById('placeName').innerHTML = name;
+  document.getElementById('placeName').href = "{% url 'destination' %}?id=" + id;
   document.getElementById('placeLink').href = "{% url 'destination' %}?id=" + id;
   document.getElementById('moreInfo').style.height = 2+document.getElementById('mapAlert').clientHeight+'px';
   $( "#mapAlert" ).animate({
