@@ -12,6 +12,17 @@ class Location(models.Model):
 	def __str__(self):
 		return 'Location: ' + self.name
 
+	def save(self):
+		super(Location, self).save()
+		if self.picture:
+            size = 1667, 1250
+            image = Image.open(self.picture)
+            image.thumbnail(size, Image.ANTIALIAS)
+            fh = storage.open(self.picture.name, "w")
+            format = 'png'
+            image.save(fh, format)
+            fh.close()
+
 
 class Testimonial(models.Model):
 	name = models.CharField(max_length=160)
