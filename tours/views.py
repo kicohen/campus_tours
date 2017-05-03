@@ -59,19 +59,28 @@ def get_photo_testimonial(request, id):
 ################################################################
 
 def map(request):
+	if request.session.has_key('visited'):
+		print(request.session['visited'])
+	else:
+		print("Session is empty")
 	context = dict()
 	locations = Location.objects.all()
 	context['locations'] = locations
 	return render(request, 'tours/map.html', context)
 
 def destination(request):
-	if 'visited' not in request.session:
-		request.session['visited'] = []
+	if request.session.has_key('visited'):
+		print(request.session['visited'])
+	# if not request.session.has_key['visited']:
+	visited = request.session.get('visited', [])
 	lid = request.GET.get('id', '')
 	context = dict()
 	location = get_object_or_404(Location, pk=lid)
 	testimonials = get_list_or_none(Testimonial, location=location)
-	request.session['visited'].append(location.pk)
+	visited.append(location.pk)
+	print("Adding %d to visited array" % location.pk)
+	request.session['visited'] = visited
+	print(request.session['visited'])
 	context['location'] = location
 	context['testimonials'] = testimonials
 	return render(request, 'tours/destination.html', context)

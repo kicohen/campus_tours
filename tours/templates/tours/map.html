@@ -109,7 +109,11 @@ function myMap(position) {
         position: new google.maps.LatLng(parseFloat({{location.latitude}}),parseFloat({{location.longitude}})),
         map: map,
         title: '{{location.name}}',
+        {% if location.pk in request.session.visited %}
+        icon: green
+        {% else %}
         icon: red
+        {% endif %}
     });
   {% endfor %}
 
