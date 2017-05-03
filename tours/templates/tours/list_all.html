@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="list-group">
 	  <a href="#" class="list-group-item active">
-	    Locations
+	    Destinations
 	  </a>
 	  {% for location in locations %}
 	  <a href="{% url 'edit_destination' %}?id={{location.pk}}" class="list-group-item">{{location.name}}</a>
