@@ -93,6 +93,28 @@ def new_destination(request):
 	context['form'] = LocationForm()
 	return render(request, 'tours/new_location.html', context)
 
+@login_required
+def list_all(request):
+	context = dict()
+	context['testimonials'] = Testimonial.objects.all()
+	context['locations'] = Location.objects.all()
+	return render(request, 'tours/list_all.html', context)
+
+@login_required
+def edit_destination(request):
+	lid = request.GET.get('id', '')
+	context = dict()
+	context['edit'] = True
+	location = get_object_or_404(Location, pk=lid)
+	context['location'] = location
+	if request.method == 'POST':
+		form = LocationForm(request.POST, request.FILES or None, instance=location)
+		if form.is_valid():
+			form.save()
+			return destinations(request)
+	context['form'] = LocationForm(instance=location)
+	return render(request, 'tours/new_location.html', context)
+
 ################################################################
 #                     Testimonial Pages                        #
 ################################################################
@@ -104,11 +126,25 @@ def new_testimonial(request):
 		form = TestimonialForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-			return destinations(request)
+			return list_all(request)
 	context['form'] = TestimonialForm()
 	return render(request, 'tours/new_testimonial.html', context)
 
 
+@login_required
+def edit_testimonial(request):
+	tid = request.GET.get('id', '')
+	context = dict()
+	context['edit'] = True
+	testimonial = get_object_or_404(Testimonial, pk=tid)
+	context['testimonial'] = testimonial
+	if request.method == 'POST':
+		form = TestimonialForm(request.POST, request.FILES or None, instance=testimonial)
+		if form.is_valid():
+			form.save()
+			return list_all(request)
+	context['form'] = TestimonialForm(instance=testimonial)
+	return render(request, 'tours/new_testimonial.html', context)
 ################################################################
 #                         User Pages                           #
 ################################################################

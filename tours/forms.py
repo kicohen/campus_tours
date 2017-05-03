@@ -54,6 +54,8 @@ class LocationForm(forms.ModelForm):
     def clean_picture(self):
         picture = self.cleaned_data['picture']
         suffix = str(picture)[-3:]
+        if picture == None:
+            return None
         if not picture:
             raise forms.ValidationError('You must upload a picture')
         if suffix not in ['jpg', 'png', 'gif'] and (not picture.content_type or not picture.content_type.startswith('image')):
