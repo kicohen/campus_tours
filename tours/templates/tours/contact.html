@@ -4,19 +4,11 @@
 <div class="container contact">
 	<br>
 	<h4> Office of Admissions </h4>
+	<br>
 	<img src="{% static 'img/admissions.png' %}" class="admissions-image">
 	<br>
 	<br>
-	<br>
 	<h4> Sign up for our email list:</h4>
-	<form action="" method="POST">
-		<input type="text" name="" placeholder="First Name">
-		<br>
-		<input type="text" name="" placeholder="Last Name">
-		<br>
-		<input type="text" name="" placeholder="Email">
-		<br>
-		<input type="submit" name="Submit" class="btn btn-primary">
-	</form>
+	{% include 'tours/_contact_form.html' %}
 </div>
 {% endblock %}

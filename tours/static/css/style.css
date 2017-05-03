@@ -312,14 +312,6 @@ input:focus{
 }
 
 /* Contact */
-.contact input{
-    margin: 10px 5%;
-    width: 90%;
-    border-radius: 15px;
-    border: 1px solid #aaa;
-    padding-left: 10px;
-    text-align: center;
-}
 
 .show{
     display: initial;
