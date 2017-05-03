@@ -27,28 +27,56 @@ function myMap(position) {
             }
           });
 
-  var image = {
-      url: "http://www.stlouisscottierescue.com/Scottie_sill_trans.gif", // url
+  var dog = {
+      url: "{% static 'img/dog.png' %}", // url
       scaledSize: new google.maps.Size(50, 50), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(25, 25) // anchor
   };
 
-  var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Current Location',
-            icon: image
-          });
+  var green = {
+      url: "{% static 'img/green_icon.png' %}", // url
+      scaledSize: new google.maps.Size(30, 50), // scaled size
+      origin: new google.maps.Point(0,0), // origin
+      anchor: new google.maps.Point(25, 25) // anchor
+  };
 
   {% for location in locations %}
     var location_marker = new google.maps.Marker({
         position: new google.maps.LatLng(parseFloat({{location.latitude}}),parseFloat({{location.longitude}})),
         map: map,
         title: '{{location.name}}',
+        icon: green
     });
   {% endfor %}
+
+  var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Current Location',
+            icon: dog
+          });
+
+  moveMarker(map, marker)
 }
+
+function moveMarker( map, marker ) {
+    function updatePosition(position){
+        marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+        // map.panTo( new google.maps.LatLng( 0, 0 ) );
+    }
+    //delayed so you can see it move
+    setInterval( function(){ 
+        if (navigator.geolocation) {
+            console.log("Updating position");
+            navigator.geolocation.getCurrentPosition(updatePosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        
+    }, 3500 );
+
+};
 
 </script>
 <!-- Google Maps API -->
