@@ -45,7 +45,7 @@ def is_logged_in(request):
 def get_photo(request, id):
     location = get_object_or_404(Location, id=id)
     if not location.picture:
-        raise Http404
+        return
     return HttpResponse(location.picture)
 
 def get_photo_testimonial(request, id):
