@@ -8,13 +8,13 @@
   </div>
   {% for location in locations %}
   <a href="{% url 'destination' %}?id={{location.pk}}" style="color: black">
-  <div class="row location" data-name="{{location.name}}">
+  <div class="row location" id="{{location.name|lower}}">
     <div class="col-xs-3 small-padding">
       <img class="location-image" src="{% url 'photo' location.id %}">
     </div>
     <div class="col-xs-8">
       <h5>{{ location.name }}</h5>
-      <p>{{ location.description|truncatechars:140 }}</p>
+      <p>{{ location.description|truncatechars:95 }}</p>
     </div>
     <div class="col-xs-1 next">
       <a href="{% url 'destination' %}?id={{location.pk}}">></a>
