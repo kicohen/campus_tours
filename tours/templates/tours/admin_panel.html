@@ -9,4 +9,10 @@
 <a class="list-group-item" href="{% url 'new_testimonial' %}">Add Testimonial to Tour</a>
 <a class="list-group-item" href="{% url 'list_all' %}">Edit Testimonials</a>
 </div>
+<br>
+<div class="container">
+<a class="list-group-item active">Debug Panel</a>
+<a class="list-group-item" href="{% url 'flush' %}">End Session</a>
+<a class="list-group-item" href="{% url 'logout' %}">Logout</a>
+</div>
 {% endblock %}
