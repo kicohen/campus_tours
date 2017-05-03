@@ -41,9 +41,8 @@ function isNearPlace(place, currentPosition){
 
 function checkPlaces(position){
   for (var i = 0; i < places.length; i++){
-    console.log("Checking current position against "+places[i].name);
     if (isNearPlace(places[i], position)){
-      return;
+      console.log(places[i].name);
     }
   }
 }
@@ -52,7 +51,6 @@ function checkPlaces(position){
 function showAlert(name, id) {
   document.getElementById('placeName').innerHTML = name;
   document.getElementById('placeLink').href = "{% url 'destination' %}?id=" + id;
-  console.log("{% url 'destination' %}?id=" + id);
   $( "#mapAlert" ).animate({
     left: "10%",
   }, 1000 );
