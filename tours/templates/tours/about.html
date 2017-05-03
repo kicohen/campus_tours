@@ -1,10 +1,38 @@
 {% extends "tours/base.html" %}
-
+{% load staticfiles %}
 {% block content %}
 <div class="container">
-	<h1>About Us</h1>
+	<h3>About Campus Tours</h3>
+	<p>Carnegie Mellon Campus Tours is designed as a resource for individuals that can't make a scheduled campus tour. This app guides anyone who is interested in an experience journeying around Carnegie Mellon's Pittsburgh campus. The app takes students through all aspects of life as a Carnegie Mellon student from academics to athletics and nutrtition to on-campus resources. Take your time, walk around campus, and just explore. </p>
+	<p>For more information about Carnegie Mellon visit: </p><a href="https://admission.enrollment.cmu.edu/">admission.enrollment.cmu.edu/</a>
+	<h3>About Carnegie Mellon</h3>
+	<p>Carnegie Mellon University is a private research university in Pittsburgh, Pennsylvania. Founded in 1900 by Andrew Carnegie as the Carnegie Technical Schools, the university became the Carnegie Institute of Technology in 1912 and began granting four-year degrees. In 1967, the Carnegie Institute of Technology merged with the Mellon Institute of Industrial Research to form Carnegie Mellon University.</p>
+	<p>Carnegie Mellon counts 13,650 students from 114 countries, over 100,000 living alumni, and over 5,000 faculty and staff. Past and present faculty and alumni include 19 Nobel Prize Laureates, 19 Members of the American Academy of Arts &amp; Sciences, 72 Members of the National Academies, 114 Emmy Award Winners, 43 Tony Award laureates, 7 Academy Award Winners, 12 Turing Award winners, 4 Rhodes Scholars, and one Schwarzman Scholar.</p>
+	<h3>About the Developers</h3>
 	<p> Hi, we are a pittsburgh based web development group that loves building simple applications. Bernard, AJ, Ritika, and Kenny Simple Scalable Systems, also known as BARKS, is up to any challenge to create simple scalable solutions. This app is
-	    a navigation app used to find your place and where to go next on CMU's campus. Call or Hire us at <a>example@example.com</a>
+	    a navigation app used to find your place and where to go next on CMU's campus. Call or Hire us at <a>hire@cmubarks.com</a>
 	</p>
+	<div class="row">
+		<div class="col-xs-3">
+			<a href="#" class="thumbnail">
+      			<img src="{% static 'img/people/aj.jpg' %}" alt="...">
+    		</a>
+		</div>
+		<div class="col-xs-3">
+			<a href="#" class="thumbnail">
+      			<img src="{% static 'img/people/ri.jpg' %}" alt="...">
+    		</a>
+		</div>
+		<div class="col-xs-3">
+			<a href="#" class="thumbnail">
+      			<img src="{% static 'img/people/bd.png' %}" alt="...">
+    		</a>
+		</div>
+		<div class="col-xs-3">
+			<a href="#" class="thumbnail">
+      			<img src="{% static 'img/people/kc.png' %}" alt="...">
+    		</a>
+		</div>
+	</div>
 </div> 
 {% endblock %}
