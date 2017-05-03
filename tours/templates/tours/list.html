@@ -14,7 +14,7 @@
     </div>
     <div class="col-xs-8">
       <h5>{{ location.name }}</h5>
-      <p>{{ location.description }}</p>
+      <p>{{ location.description|truncatechars:140 }}</p>
     </div>
     <div class="col-xs-1 next">
       <a href="{% url 'destination' %}?id={{location.pk}}">></a>
