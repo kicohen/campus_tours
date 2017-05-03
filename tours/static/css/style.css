@@ -188,7 +188,41 @@ main {
 
 #map{
 	width: 100%;
-	height: 100vh;
+	height: calc(100vh - 50px);
+}
+
+#mapAlert{
+    width: 80%;
+    position: fixed;
+    left: 110%;
+    top: 75px;
+    height: 50px;
+    padding: 15px;
+    z-index: 5;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border: 1px solid #3c763d;
+    border-radius: 15px;
+}
+
+#moreInfo{
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #C3E3B5;
+    float: right;
+    color: #3c763d;
+    padding-top: 3px;
+    margin: -16px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px #3c763d solid;
+
+}
+
+#moreInfo:hover{
+    background-color: #589258;
 }
 
 #loading{

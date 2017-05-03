@@ -1,12 +1,28 @@
 {% extends "tours/base.html" %}
 {% load staticfiles %}
 {% block content %}
+<div id="mapAlert">
+You are at the <span id="placeName"></span>.
+<a href="" id="placeLink">
+<div id="moreInfo">
+  More Information
+</div>
+</a>
+</div>
 <div id="map"></div>
 <img src="{% static 'img/spinner.gif' %}" id="loading">
 {% endblock %}
 
 {% block javascript %}
 <script>
+function showAlert(name, id) {
+  document.getElementById('placeName').innerHTML = name;
+  document.getElementById('placeLink').href = "{% url 'destination' %}?id=" + id;
+  console.log("{% url 'destination' %}?id=" + id);
+  $( "#mapAlert" ).animate({
+    left: "10%",
+  }, 1000 );
+};
 
 function getLocation() {
     if (navigator.geolocation) {
