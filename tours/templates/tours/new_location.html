@@ -19,6 +19,10 @@
 	{% endif %}
     <p id="demo"></p>
 </form>
+<br>
+{% if edit %}
+<a href="{% url 'delete_destination' %}?id={{location.pk}}" class="btn btn-danger">Delete Location</a>
+{% endif %}
 </div>      
 {% endblock %}
 

@@ -17,5 +17,9 @@
 	<input type="submit" class="btn btn-success" value="Add Testimonial" />
 	{% endif %}
 </form>
+<br>
+{% if edit %}
+<a href="{% url 'delete_testimonial' %}?id={{testimonial.pk}}" class="btn btn-danger">Delete Testimonial</a>
+{% endif %}
 </div>      
 {% endblock %}

@@ -115,6 +115,13 @@ def edit_destination(request):
 	context['form'] = LocationForm(instance=location)
 	return render(request, 'tours/new_location.html', context)
 
+@login_required
+def delete_destination(request):
+	did = request.GET.get('id','')
+	destination = get_object_or_404(Location, pk=did)
+	destination.delete()
+	return list_all(request)
+
 ################################################################
 #                     Testimonial Pages                        #
 ################################################################
@@ -145,6 +152,15 @@ def edit_testimonial(request):
 			return list_all(request)
 	context['form'] = TestimonialForm(instance=testimonial)
 	return render(request, 'tours/new_testimonial.html', context)
+
+
+@login_required
+def delete_testimonial(request):
+	tid = request.GET.get('id','')
+	testimonial = get_object_or_404(Testimonial, pk=tid)
+	testimonial.delete()
+	return list_all(request)
+	
 ################################################################
 #                         User Pages                           #
 ################################################################
