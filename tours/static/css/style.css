@@ -167,6 +167,13 @@ main {
 
 /* Page Specific CSS */
 
+/* Home page */
+
+#login-button{
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+}
 
 /* Map Page */
 
