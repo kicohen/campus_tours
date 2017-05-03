@@ -1,7 +1,7 @@
 {% extends "tours/base.html" %}
 
 {% block content %}
-<div style="background: url('{% url 'photo' location.id %}'); background-size: contain;" class="title-image" ></div>
+<div style="background: url('{% url 'photo' location.id %}') no-repeat fixed;" class="title-image" ></div>
 <div class="title-bar">{{location.name}}</div>
 
 <br>
@@ -9,10 +9,16 @@
 <div class="container">
 	<div class="row">
 		{% for testimonial in testimonials %}
-		<div class="col-xs-4 bg_image" style="background: url('{% url 'photo_testimonial' testimonial.id %}');" id="t{{testimonial.pk}}">
+		<div class="col-xs-4 bg_image" style="background: url('{% url 'photo_testimonial' testimonial.id %}') no-repeat bottom; background-size: cover;" id="t{{testimonial.pk}}">
 		</div>
 		{% endfor %}
 	</div>
+  <br>
+  <div class="container">
+  <div class="jumbotron">
+    {{ location.description }}
+    </div>
+  </div>
 </div>
 
 {% for testimonial in testimonials %}
@@ -21,13 +27,15 @@
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
+        <div class="modal-body modal-image" >
+          <button type="button" class="close" data-dismiss="modal">&times;&nbsp;</button>
+          <img src="{% url 'photo_testimonial' testimonial.id %}">
+        </div>
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">{{testimonial.name}}</h4>
         </div>
         <div class="modal-body">
           <p>{{testimonial.description}}</p>
-          <img src="{% url 'photo_testimonial' testimonial.id %}">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
